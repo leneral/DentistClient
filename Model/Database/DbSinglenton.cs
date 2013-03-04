@@ -31,7 +31,6 @@ namespace Model.Database
 
         public void RunNoQuery(string cmd)
         {
-            //ConnectDb(ConfigurationManager.AppSettings["DBNAME"]);
             ConnectDb("..\\..\\database\\Dentist.accdb");
             _db.RunNoQuery(cmd);
             CloseDb();
@@ -40,7 +39,6 @@ namespace Model.Database
         public DataTable RunQuery(string cmd)
         {
             ConnectDb("..\\..\\database\\Dentist.accdb");
-            //ConnectDb(ConfigurationManager.AppSettings["DBNAME"]);
             DataTable dt = _db.RunQuery(cmd);
             CloseDb();
 
