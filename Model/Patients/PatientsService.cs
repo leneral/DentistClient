@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Common;
 using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.Globalization;
+using System.Windows.Forms;
 using Model.Database;
 
 namespace Model.Patients
@@ -34,7 +36,7 @@ namespace Model.Patients
         {
             string cmd =
                 string.Format(
-                    @"INSERT INTO info(caseno, patientname, facewoundhistory,iscuring, type, degree, phase, caseexcluded, datetimepreliminary)" +
+                    @"INSERT INTO preliminaryInfo(caseno, patientname, facewoundhistory,iscuring, type, degree, phase, caseexcluded, datetimepreliminary)" +
                     @"VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}', '{8}')",
                     info.CaseNo,
                     info.PatientName,
@@ -54,7 +56,7 @@ namespace Model.Patients
         {
             string cmd =
                 string.Format(
-                    @"INSERT INTO info(caseno, patientname, writer, filltime, type, score, personalcontext, sickhistorynow,sickhistorybefore,keywords,checkinfo,diagnoseinfo,cureinfo,picture)" +
+                    @"INSERT INTO diagnosedInfo(caseno, patientname, writer, filltime, type, score, personalcontext, sickhistorynow,sickhistorybefore,keywords,checkinfo,diagnoseinfo,cureinfo,picture)" +
                     @"VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}', '{10}', '{11}','{12}', '{13}')",
                     info.CaseNo, info.PatientName, info.Writer, info.Filltime, info.Type, info.Score,
                     info.PersonalContext, info.SickHistoryNow,
@@ -146,27 +148,32 @@ namespace Model.Patients
 
         public static DataTable QueryPatients(string item = "", string value = "")
         {
-            string cmd = item != string.Empty
+            string cmd = value != string.Empty
                              ? string.Format(@"SELECT * FROM [patientInfo] WHERE {0} like '%{1}%'  ", item, value)
                              : string.Format(@"SELECT * FROM [patientInfo]");
 
             return RunQuery(cmd);
         }
 
-        public static DataTable EasyQueryPatients(string name, string caseno, byte sex, int age, string hospital)
+        public static DataTable EasyQueryPatients(string name, string caseno, string sex, string age, string hospital)
         {
             var cond = new string[5];
             string cmd = @"SELECT * FROM [patientInfo]";
-
             if (!string.IsNullOrEmpty(name))
                 cond[0] = string.Format(@" patientname LIKE '%{0}%'", name);
             if (!string.IsNullOrEmpty(caseno))
                 cond[1] = string.Format(@" caseno = '{0}'", caseno);
-            if (sex != 255)
-                cond[2] = string.Format(@" sex = {0}", sex);
-            if (age >= 0)
-                cond[3] = string.Format(@" age = {0}", age);
-            if (string.IsNullOrEmpty(hospital))
+            if (!string.IsNullOrEmpty(sex))
+            {
+                var sexsymbol = sex == "男" ? 1 : 0;
+                cond[2] = string.Format(@" sex = {0}", sexsymbol);
+            }
+            if (!string.IsNullOrEmpty(age))
+            {
+                var agesymbol = Convert.ToInt32(age);
+                cond[3] = string.Format(@" age = {0}", agesymbol);
+            }
+            if (!string.IsNullOrEmpty(hospital))
                 cond[4] = string.Format(@" fromHosp LIKE '%{0}%'", hospital);
 
             bool flag = false;
@@ -191,14 +198,14 @@ namespace Model.Patients
         public static DataTable QueryPreliminaryInfo(string item, string value)
         {
             string cmd =
-                string.Format(@"SELECT * FROM [preliminaryInfo] WHERE {0} = '%{1}%'", item, value);
+                string.Format(@"SELECT * FROM [preliminaryInfo] WHERE {0} = '{1}'", item, value);
             return RunQuery(cmd);
         }
 
         public static DataTable QueryDiagnosedInfo(string item, string value)
         {
             string cmd =
-                string.Format(@"SELECT * FROM  [diagnosedInfo] WHERE  {0} LIKE '%{1}%'", item, value);
+                string.Format(@"SELECT * FROM  [diagnosedInfo] WHERE  {0} = '{1}'", item, value);
             return RunQuery(cmd);
         }
 

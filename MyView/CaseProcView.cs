@@ -53,18 +53,18 @@ namespace DentistryClient.MyView
             switch (tabCaseProcess.SelectedIndex)
             {
                 case 0:
-                    txtPersonalContext.Text =
+                    txtPersonalContext.Text +=
                         listView2.SelectedItems[0].SubItems[0].Text.ToString(CultureInfo.InvariantCulture);
                     break;
                 case 1:
-                    txtCheckContent1.Text =
+                    txtCheckContent1.Text +=
                         listView2.SelectedItems[0].SubItems[0].Text.ToString(CultureInfo.InvariantCulture);
                     break;
                 case 2:
-                    txtDiagnose.Text = listView2.SelectedItems[0].SubItems[0].Text.ToString(CultureInfo.InvariantCulture);
+                    txtDiagnose.Text += listView2.SelectedItems[0].SubItems[0].Text.ToString(CultureInfo.InvariantCulture);
                     break;
                 case 3:
-                    txtCure.Text = listView2.SelectedItems[0].SubItems[0].Text.ToString(CultureInfo.InvariantCulture);
+                    txtCure.Text += listView2.SelectedItems[0].SubItems[0].Text.ToString(CultureInfo.InvariantCulture);
                     break;
             }
         }
@@ -74,7 +74,7 @@ namespace DentistryClient.MyView
             switch (tabCaseProcess.SelectedIndex)
             {
                 case 0:
-                    txtSickHistoryNow.Text =
+                    txtSickHistoryNow.Text +=
                         listView3.SelectedItems[0].SubItems[0].Text.ToString(CultureInfo.InvariantCulture);
                     break;
                 case 1:
@@ -96,7 +96,7 @@ namespace DentistryClient.MyView
             switch (tabCaseProcess.SelectedIndex)
             {
                 case 0:
-                    txtSickHistoryBefore.Text = listView4.SelectedItems[0].SubItems[0].Text;
+                    txtSickHistoryBefore.Text += listView4.SelectedItems[0].SubItems[0].Text;
                     break;
                 case 1:
                     txtCheckContent1.Text +=
@@ -117,7 +117,7 @@ namespace DentistryClient.MyView
             switch (tabCaseProcess.SelectedIndex)
             {
                 case 0:
-                    txtKeywords.Text = listView5.SelectedItems[0].SubItems[0].Text;
+                    txtKeywords.Text += listView5.SelectedItems[0].SubItems[0].Text;
                     break;
                 case 1:
                     txtCheckContent1.Text +=
@@ -148,16 +148,14 @@ namespace DentistryClient.MyView
                 LoadTemplates(tabCaseProcess.SelectedIndex);
             }
 
-            if (tabCaseProcess.SelectedIndex == 4)
-            {
-                listView2.Visible = false;
-                listView3.Visible = false;
-                listView4.Visible = false;
-                listView5.Visible = false;
+            if (tabCaseProcess.SelectedIndex != 4) return;
+            listView2.Visible = false;
+            listView3.Visible = false;
+            listView4.Visible = false;
+            listView5.Visible = false;
 
-                _ctrl = Presenter.OnLoadPrescriptionCtrl().LastLoadedControl;
-                pnlTemplate.Controls.Add(_ctrl);
-            }
+            _ctrl = Presenter.OnLoadPrescriptionCtrl().LastLoadedControl;
+            pnlTemplate.Controls.Add(_ctrl);
         }
 
         private void CaseProcView_SizeChanged(object sender, EventArgs e)

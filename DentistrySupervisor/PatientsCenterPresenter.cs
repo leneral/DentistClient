@@ -10,26 +10,46 @@ namespace DentistryClient.DentistrySupervisor
         public void OnPatientsCheckedChanged()
         {
             View.PatientTextState = !View.PatientTextState;
+            if (!View.PatientTextState)
+            {
+                View.Patient = string.Empty;
+            }
         }
 
         public void OnCaseNoCheckedChanged()
         {
             View.CaseNoTextState = !View.CaseNoTextState;
+            if (!View.CaseNoTextState)
+            {
+                View.CaseNo = string.Empty;
+            }
         }
 
         public void OnSexCheckedChanged()
         {
             View.SexCmbState = !View.SexCmbState;
+            if (!View.SexCmbState)
+            {
+                View.Sex = string.Empty;
+            }
         }
 
         public void OnAgeCheckedChanged()
         {
             View.AgeNumState = !View.AgeNumState;
+            if (!View.AgeNumState)
+            {
+                View.Age = string.Empty;
+            }
         }
 
         public void OnHospitalCheckedChanged()
         {
             View.HospitalCmbState = !View.HospitalCmbState;
+            if (!View.HospitalCmbState)
+            {
+                 View.Hospital = string.Empty;
+            }
         }
 
         public void OnLookup()

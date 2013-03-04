@@ -2,7 +2,9 @@
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using Model.ImageManager;
 using Model.Message;
 using Model.Patients;
@@ -32,21 +34,35 @@ namespace DentistryClient.Register
 
         public void OnSave()
         {
+            var reg = new Regex("^[0-9]+$");  
             if (View.CaseNo == string.Empty)
             {
-                MessageA.ShowMessage("对不起, 病例号不能为空");
+                MessageA.ShowMessage("对不起, 病例号不能为空！");
                 return;
             }
             if (View.PatientsName == string.Empty)
             {
-                MessageA.ShowMessage("对不起，姓名不能为空");
+                MessageA.ShowMessage("对不起，姓名不能为空！");
                 return;
             }
-            //if (!Numeric.IsNumber(View.CaseNo))
-            //{
-            //    MessageA.ShowMessage("病历号必须全为数字！");
-            //    return;
-            //}
+            if (View.From == string.Empty)
+            {
+                MessageA.ShowMessage("对不起，诊所或医院不能为空！");
+                return;
+            }
+            var ma = reg.Match(View.CaseNo);
+            if (!ma.Success)
+            {
+                MessageA.ShowMessage("病历号必须全为数字！");
+                return;
+            }
+
+            var dt = PatientsService.QueryCaseNo();
+            if (dt.Rows.Cast<DataRow>().Any(dr => dr[0].ToString() == View.CaseNo))
+            {
+                MessageA.ShowMessage("病历号已存在，请从新输入！");
+                return;
+            }
 
             var patientsInfo = new PatientsInfo
                 {

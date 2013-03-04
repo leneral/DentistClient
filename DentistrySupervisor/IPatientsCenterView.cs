@@ -6,9 +6,9 @@ namespace DentistryClient.DentistrySupervisor
     {
         string CaseNo { get; set; }
         string Patient { get; set; }
-        byte Sex { get; set; }
-        int Age { get; set; }
-        string Hospital { get; }
+        string Sex { get; set; }
+        string Age { get; set; }
+        string Hospital { get; set; }
 
         bool ClinckRadioState { get; set; }
         bool PatientTextState { get; set; }

@@ -32,6 +32,7 @@ namespace DentistryClient.UserCtrl
         {
             this.ttabControl3 = new System.Windows.Forms.TabControl();
             this.tabEzSearch = new System.Windows.Forms.TabPage();
+            this.chkHospital = new System.Windows.Forms.CheckBox();
             this.cmbHospital = new System.Windows.Forms.ComboBox();
             this.numAge = new System.Windows.Forms.NumericUpDown();
             this.chkAge = new System.Windows.Forms.CheckBox();
@@ -61,7 +62,6 @@ namespace DentistryClient.UserCtrl
             this.columnHeader32 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader33 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader34 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chkHospital = new System.Windows.Forms.CheckBox();
             this.ttabControl3.SuspendLayout();
             this.tabEzSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAge)).BeginInit();
@@ -102,6 +102,17 @@ namespace DentistryClient.UserCtrl
             this.tabEzSearch.TabIndex = 0;
             this.tabEzSearch.Text = "简易查询";
             // 
+            // chkHospital
+            // 
+            this.chkHospital.AutoSize = true;
+            this.chkHospital.Location = new System.Drawing.Point(452, 51);
+            this.chkHospital.Name = "chkHospital";
+            this.chkHospital.Size = new System.Drawing.Size(84, 16);
+            this.chkHospital.TabIndex = 14;
+            this.chkHospital.Text = "医院或诊所";
+            this.chkHospital.UseVisualStyleBackColor = true;
+            this.chkHospital.CheckedChanged += new System.EventHandler(this.chkHospital_CheckedChanged);
+            // 
             // cmbHospital
             // 
             this.cmbHospital.Enabled = false;
@@ -113,7 +124,7 @@ namespace DentistryClient.UserCtrl
             "诊所1",
             "诊所2",
             "诊所3"});
-            this.cmbHospital.Location = new System.Drawing.Point(527, 49);
+            this.cmbHospital.Location = new System.Drawing.Point(554, 49);
             this.cmbHospital.Name = "cmbHospital";
             this.cmbHospital.Size = new System.Drawing.Size(102, 20);
             this.cmbHospital.TabIndex = 8;
@@ -186,7 +197,7 @@ namespace DentistryClient.UserCtrl
             // 
             // btnEasySearch
             // 
-            this.btnEasySearch.Location = new System.Drawing.Point(688, 51);
+            this.btnEasySearch.Location = new System.Drawing.Point(684, 87);
             this.btnEasySearch.Name = "btnEasySearch";
             this.btnEasySearch.Size = new System.Drawing.Size(75, 23);
             this.btnEasySearch.TabIndex = 6;
@@ -380,17 +391,6 @@ namespace DentistryClient.UserCtrl
             // 
             this.columnHeader34.Text = "初诊时间";
             this.columnHeader34.Width = 203;
-            // 
-            // chkHospital
-            // 
-            this.chkHospital.AutoSize = true;
-            this.chkHospital.Location = new System.Drawing.Point(443, 51);
-            this.chkHospital.Name = "chkHospital";
-            this.chkHospital.Size = new System.Drawing.Size(84, 16);
-            this.chkHospital.TabIndex = 14;
-            this.chkHospital.Text = "医院或诊所";
-            this.chkHospital.UseVisualStyleBackColor = true;
-            this.chkHospital.CheckedChanged += new System.EventHandler(this.chkHospital_CheckedChanged);
             // 
             // PatientsCenterCtrl
             // 

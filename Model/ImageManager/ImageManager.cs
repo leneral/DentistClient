@@ -23,6 +23,6 @@ namespace Model.ImageManager
                 }
             }
             return photoByte;
-        }  
+        }   
     }
 }

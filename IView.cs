@@ -1,5 +1,4 @@
-﻿using System;
-namespace DentistryClient
+﻿namespace DentistryClient
 {
     public interface IView
     {

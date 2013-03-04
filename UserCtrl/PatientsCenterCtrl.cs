@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Globalization;
 using System.Windows.Forms;
 using DentistryClient.DentistrySupervisor;
 using Model.Patients;
@@ -8,12 +9,13 @@ namespace DentistryClient.UserCtrl
 {
     public partial class PatientsCenterCtrl : UserControl, IPatientsCenterView
     {
+        public PatientsCenterPresenter Presenter { get; set; }
         public PatientsCenterCtrl()
         {
             InitializeComponent();
         }
 
-        public PatientsCenterPresenter Presenter { get; set; }
+       
 
         public void Exit()
         {
@@ -39,10 +41,10 @@ namespace DentistryClient.UserCtrl
             set { txtName.Text = value; }
         }
 
-        public byte Sex
+        public string Sex
         {
-            get { return (byte) cmbSex.SelectedIndex; }
-            set { cmbSex.SelectedIndex = value; }
+            get { return  cmbSex.Text; }
+            set { cmbSex.Text = value; }
         }
 
         public string Hospital
@@ -51,10 +53,10 @@ namespace DentistryClient.UserCtrl
             set { cmbHospital.Text = value; }
         }
 
-        public int Age
+        public string Age
         {
-            get { return (int) numAge.Value; }
-            set { }
+            get { return  numAge.Value.ToString(CultureInfo.InvariantCulture); }
+            set { numAge.Text = value; }
         }
 
         public bool PatientTextState
@@ -101,7 +103,7 @@ namespace DentistryClient.UserCtrl
 
         #endregion
 
-        private void PatientsCenterCtrl_Load(object sender, EventArgs e)
+        private void PatientsCenterCtrl_Load(object sender, EventArgs e)  
         {
         }
 
@@ -111,7 +113,6 @@ namespace DentistryClient.UserCtrl
 
             lvPatientsInfo.Items.Clear();
             lvPatientsInfo.BeginUpdate();
-
             foreach (DataRow r in dt.Rows)
             {
                 var li = new ListViewItem();

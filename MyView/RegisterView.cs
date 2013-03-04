@@ -67,7 +67,7 @@ namespace DentistryClient.MyView
 
         public string CaseNo
         {
-            get { return txtCaseNo.Text; }
+            get { return txtCaseNo.Text.Trim(); }
             set { txtCaseNo.Text = value; }
         }
 

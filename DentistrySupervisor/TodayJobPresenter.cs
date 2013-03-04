@@ -122,35 +122,37 @@ namespace DentistryClient.DentistrySupervisor
 
         public DataTable Search()
         {
-            if (string.IsNullOrEmpty(View.SearchWord)) return null;
-
-            String searchWord = View.SearchWord;
-
             DataTable dt;
-            if (!Util.IsEnglishChars(searchWord))
-            {
-                dt = QueryAllPatients();
-
-                for (int i = 0; i < dt.Rows.Count;)
-                {
-                    DataRow dr = dt.Rows[i];
-                    string py = Ch2Pinyin.ToPinyin(dr[0].ToString());
-                    if (py.Length > searchWord.Length &&
-                        py.Substring(0, searchWord.Length).ToLower() == searchWord.ToLower())
-                    {
-                        i++;
-                        continue;
-                    }
-
-                    dt.Rows[i].Delete();
-                    dt.AcceptChanges();
-                }
-            }
-            else
+            if (string.IsNullOrEmpty(View.SearchWord))
             {
                 dt = QueryAPatient();
             }
+            else
+            {
+                String searchWord = View.SearchWord;
+                if (!Util.IsEnglishChars(searchWord))
+                {
+                    dt = QueryAllPatients();
 
+                    for (int i = 0; i < dt.Rows.Count; )
+                    {
+                        DataRow dr = dt.Rows[i];
+                        string py = Ch2Pinyin.ToPinyin(dr[0].ToString());
+                        if (py.Length > searchWord.Length &&
+                            py.Substring(0, searchWord.Length).ToLower() == searchWord.ToLower())
+                        {
+                            i++;
+                            continue;
+                        }
+                        dt.Rows[i].Delete();
+                        dt.AcceptChanges();
+                    }
+                }
+                else
+                {
+                    dt = QueryAPatient();
+                }
+            }
             return dt;
         }
 
