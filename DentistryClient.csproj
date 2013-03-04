@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F7B17003-8FE9-49C3-B9D1-D2371895CCDD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DentistryClient</RootNamespace>
+    <AssemblyName>DentistryClient</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ChnCharInfo">
+      <HintPath>D:\Program Files (x86)\Microsoft Visual Studio International Pack\Simplified Chinese Pin-Yin Conversion Library\ChnCharInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>vendor\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CaseProc\CaseProcPresenter.cs" />
+    <Compile Include="CaseProc\ICaseProcView.cs" />
+    <Compile Include="ClinicCase\ClinicCasePresenter.cs" />
+    <Compile Include="ClinicCase\IClinicCaseView.cs" />
+    <Compile Include="DentistrySupervisor\IMainView.cs" />
+    <Compile Include="DentistrySupervisor\IOrderView.cs" />
+    <Compile Include="DentistrySupervisor\IPatientsCenterView.cs" />
+    <Compile Include="DentistrySupervisor\ITodayJobView.cs" />
+    <Compile Include="DentistrySupervisor\MainPresenter.cs" />
+    <Compile Include="DentistrySupervisor\OrderPresenter.cs" />
+    <Compile Include="DentistrySupervisor\PatientsCenterPresenter.cs" />
+    <Compile Include="DentistrySupervisor\TodayJobPresenter.cs" />
+    <Compile Include="IView.cs" />
+    <Compile Include="IViewLoader.cs" />
+    <Compile Include="Login\ILoginView.cs" />
+    <Compile Include="Login\LoginPresenter.cs" />
+    <Compile Include="Order\IOrderView.cs" />
+    <Compile Include="Order\OrderPresenter.cs" />
+    <Compile Include="Prescription\IPrescriptionView.cs" />
+    <Compile Include="Prescription\PrescriptionPresenter.cs" />
+    <Compile Include="Preliminary\IPreliminaryView.cs" />
+    <Compile Include="Preliminary\PreliminaryPresenter.cs" />
+    <Compile Include="Presenter.cs" />
+    <Compile Include="Register\IRegisterView.cs" />
+    <Compile Include="Register\RegisterPresenter.cs" />
+    <Compile Include="Salary\ChargePresenter.cs" />
+    <Compile Include="Salary\IChargeView.cs" />
+    <Compile Include="Search\ISearchView.cs" />
+    <Compile Include="Search\SearchPresenter.cs" />
+    <Compile Include="Selection\ISelectionView.cs" />
+    <Compile Include="Selection\SelectionPresenter.cs" />
+    <Compile Include="UserCtrl\OrderCenterCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCtrl\OrderCenterCtrl.Designer.cs">
+      <DependentUpon>OrderCenterCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrl\PatientsCenterCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCtrl\PatientsCenterCtrl.Designer.cs">
+      <DependentUpon>PatientsCenterCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrl\PrescriptionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCtrl\PrescriptionCtrl.Designer.cs">
+      <DependentUpon>PrescriptionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrl\TodayJobCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCtrl\TodayJobCtrl.Designer.cs">
+      <DependentUpon>TodayJobCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MyView\CaseProcView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyView\CaseProcView.Designer.cs">
+      <DependentUpon>CaseProcView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyView\ChargeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyView\ChargeView.Designer.cs">
+      <DependentUpon>ChargeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyView\ClinicCasesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyView\ClinicCasesView.Designer.cs">
+      <DependentUpon>ClinicCasesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyView\DentistrySupervisorView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyView\DentistrySupervisorView.Designer.cs">
+      <DependentUpon>DentistrySupervisorView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyView\LoginView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyView\LoginView.Designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyView\OrderView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyView\OrderView.Designer.cs">
+      <DependentUpon>OrderView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyView\OutProcView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyView\OutProcView.Designer.cs">
+      <DependentUpon>OutProcView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyView\SelectionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyView\SelectionView.Designer.cs">
+      <DependentUpon>SelectionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyView\SearchView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyView\SearchView.Designer.cs">
+      <DependentUpon>SearchView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyView\PreliminaryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyView\PreliminaryView.Designer.cs">
+      <DependentUpon>PreliminaryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyView\RegisterView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyView\RegisterView.Designer.cs">
+      <DependentUpon>RegisterView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyView\TemplateOpView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyView\TemplateOpView.Designer.cs">
+      <DependentUpon>TemplateOpView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewLoader.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="MyView\CaseProcView.resx">
+      <DependentUpon>CaseProcView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyView\ChargeView.resx">
+      <DependentUpon>ChargeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyView\ClinicCasesView.resx">
+      <DependentUpon>ClinicCasesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyView\DentistrySupervisorView.resx">
+      <DependentUpon>DentistrySupervisorView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyView\LoginView.resx">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyView\OrderView.resx">
+      <DependentUpon>OrderView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyView\OutProcView.resx">
+      <DependentUpon>OutProcView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyView\SelectionView.resx">
+      <DependentUpon>SelectionView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyView\SearchView.resx">
+      <DependentUpon>SearchView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyView\PreliminaryView.resx">
+      <DependentUpon>PreliminaryView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyView\RegisterView.resx">
+      <DependentUpon>RegisterView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyView\TemplateOpView.resx">
+      <DependentUpon>TemplateOpView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCtrl\OrderCenterCtrl.resx">
+      <DependentUpon>OrderCenterCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCtrl\PatientsCenterCtrl.resx">
+      <DependentUpon>PatientsCenterCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCtrl\PrescriptionCtrl.resx">
+      <DependentUpon>PrescriptionCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCtrl\TodayJobCtrl.resx">
+      <DependentUpon>TodayJobCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Model\Model.csproj">
+      <Project>{BC706C6D-2B2A-451F-8B95-47B395EFE053}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
