@@ -48,8 +48,6 @@ namespace DentistryClient.UserCtrl
             this.txtPersonName = new System.Windows.Forms.TextBox();
             this.cmbPerson = new System.Windows.Forms.ComboBox();
             this.chkCond2 = new System.Windows.Forms.CheckBox();
-            this.dtpToDate = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.cmbTimeCond = new System.Windows.Forms.ComboBox();
             this.chkCond1 = new System.Windows.Forms.CheckBox();
@@ -227,8 +225,6 @@ namespace DentistryClient.UserCtrl
             this.tabAdvanceSearch.Controls.Add(this.txtPersonName);
             this.tabAdvanceSearch.Controls.Add(this.cmbPerson);
             this.tabAdvanceSearch.Controls.Add(this.chkCond2);
-            this.tabAdvanceSearch.Controls.Add(this.dtpToDate);
-            this.tabAdvanceSearch.Controls.Add(this.label7);
             this.tabAdvanceSearch.Controls.Add(this.dtpFromDate);
             this.tabAdvanceSearch.Controls.Add(this.cmbTimeCond);
             this.tabAdvanceSearch.Controls.Add(this.chkCond1);
@@ -276,22 +272,6 @@ namespace DentistryClient.UserCtrl
             this.chkCond2.UseVisualStyleBackColor = true;
             this.chkCond2.CheckedChanged += new System.EventHandler(this.chkCond2_CheckedChanged);
             // 
-            // dtpToDate
-            // 
-            this.dtpToDate.Location = new System.Drawing.Point(251, 21);
-            this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(107, 21);
-            this.dtpToDate.TabIndex = 5;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(232, 26);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(17, 12);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "到";
-            // 
             // dtpFromDate
             // 
             this.dtpFromDate.Location = new System.Drawing.Point(119, 21);
@@ -303,9 +283,7 @@ namespace DentistryClient.UserCtrl
             // 
             this.cmbTimeCond.FormattingEnabled = true;
             this.cmbTimeCond.Items.AddRange(new object[] {
-            "首诊时间",
-            "就诊时间",
-            "回访时间"});
+            "首诊时间"});
             this.cmbTimeCond.Location = new System.Drawing.Point(38, 21);
             this.cmbTimeCond.Name = "cmbTimeCond";
             this.cmbTimeCond.Size = new System.Drawing.Size(75, 20);
@@ -401,7 +379,6 @@ namespace DentistryClient.UserCtrl
             this.Controls.Add(this.ttabControl3);
             this.Name = "PatientsCenterCtrl";
             this.Size = new System.Drawing.Size(799, 663);
-            this.Load += new System.EventHandler(this.PatientsCenterCtrl_Load);
             this.ttabControl3.ResumeLayout(false);
             this.tabEzSearch.ResumeLayout(false);
             this.tabEzSearch.PerformLayout();
@@ -424,8 +401,6 @@ namespace DentistryClient.UserCtrl
         private System.Windows.Forms.TextBox txtPersonName;
         private System.Windows.Forms.ComboBox cmbPerson;
         private System.Windows.Forms.CheckBox chkCond2;
-        private System.Windows.Forms.DateTimePicker dtpToDate;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dtpFromDate;
         private System.Windows.Forms.ComboBox cmbTimeCond;
         private System.Windows.Forms.CheckBox chkCond1;
@@ -449,8 +424,8 @@ namespace DentistryClient.UserCtrl
         private System.Windows.Forms.CheckBox chkName;
         private System.Windows.Forms.CheckBox chkHospital;
 
-
-        public event EventHandler Closing;
-        public event EventHandler Loading;
+        public void Exit()
+        {
+        }
     }
 }

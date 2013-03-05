@@ -34,8 +34,8 @@ namespace DentistryClient.MyView
                 string tmp = r[2].ToString() == "1" ? "ÄÐ" : "Å®";
                 item.SubItems.Add(tmp);
                 item.SubItems.Add(r[3].ToString());
-                item.SubItems.Add(r[8].ToString());
                 item.SubItems.Add(r[17].ToString());
+                item.SubItems.Add(r[8].ToString());
                 item.SubItems.Add("");
 
                 lvPatientsInfo.Items.Add(item);
