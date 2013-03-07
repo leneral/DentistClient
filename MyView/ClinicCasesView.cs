@@ -45,13 +45,11 @@ namespace DentistryClient.MyView
         {
             cbxType.Text = info.Type;
             cbxScore.Text = info.Score;
-            //if (info.Picture != string.Empty)
-            //{
-            //    var imageinfo = ToHashtable.FromBase64String(info.Picture);
-            //    var ms = new MemoryStream(imageinfo);
-            //    ms.Position = 0;
-            //    picImage.Image = Image.FromStream(ms);
-            //}
+            if (info.Picture.Length != 0)
+            {
+                byte[] photobyte = Convert.FromBase64String(info.Picture);
+                picImage.Image = Presenter.GetImageManager(photobyte); 
+            }
             Hashtable hashInfo = info.ToHashtable();
             DisplayDiagOrPremInfo(hashInfo);
         }
