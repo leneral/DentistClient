@@ -24,6 +24,8 @@ namespace DentistryClient.Register
         string Other { get; set; }
         Image Picture { get; set; }
 
+        bool ToUpdate { get; set; }
+
         RegisterPresenter Presenter { get; set; }
 
         void ShowDlg();

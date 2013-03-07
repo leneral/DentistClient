@@ -71,6 +71,12 @@
     <Compile Include="IViewLoader.cs" />
     <Compile Include="Login\ILoginView.cs" />
     <Compile Include="Login\LoginPresenter.cs" />
+    <Compile Include="MyView\ReVisitView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyView\ReVisitView.Designer.cs">
+      <DependentUpon>ReVisitView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Order\IOrderView.cs" />
     <Compile Include="Order\OrderPresenter.cs" />
     <Compile Include="Prescription\IPrescriptionView.cs" />
@@ -80,6 +86,10 @@
     <Compile Include="Presenter.cs" />
     <Compile Include="Register\IRegisterView.cs" />
     <Compile Include="Register\RegisterPresenter.cs" />
+    <Compile Include="ReVisit\IReVisitCtrl.cs" />
+    <Compile Include="ReVisit\IReVisitView.cs" />
+    <Compile Include="ReVisit\ReVisitCtrlPresenter.cs" />
+    <Compile Include="ReVisit\ReVisitViewPresenter.cs" />
     <Compile Include="Salary\ChargePresenter.cs" />
     <Compile Include="Salary\IChargeView.cs" />
     <Compile Include="Search\ISearchView.cs" />
@@ -103,6 +113,12 @@
     </Compile>
     <Compile Include="UserCtrl\PrescriptionCtrl.Designer.cs">
       <DependentUpon>PrescriptionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrl\ReVisitCenterCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCtrl\ReVisitCenterCtrl.Designer.cs">
+      <DependentUpon>ReVisitCenterCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserCtrl\TodayJobCtrl.cs">
       <SubType>UserControl</SubType>
@@ -185,6 +201,9 @@
       <DependentUpon>TemplateOpView.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewLoader.cs" />
+    <EmbeddedResource Include="MyView\ReVisitView.resx">
+      <DependentUpon>ReVisitView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -244,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserCtrl\PrescriptionCtrl.resx">
       <DependentUpon>PrescriptionCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCtrl\ReVisitCenterCtrl.resx">
+      <DependentUpon>ReVisitCenterCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserCtrl\TodayJobCtrl.resx">
       <DependentUpon>TodayJobCtrl.cs</DependentUpon>

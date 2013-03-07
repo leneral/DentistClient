@@ -25,8 +25,17 @@ namespace DentistryClient.DentistrySupervisor
 
         public void OnRegister()
         {
-            _loader.LoadRegisterView(AddNewNodeDelegWrap);
-            _loader.LastLoadedView.ShowDialog();
+            if (string.IsNullOrEmpty(View.SelectedCaseNo))
+            {
+                _loader.LoadRegisterView(AddNewNodeDelegWrap);
+                _loader.LastLoadedView.ShowDialog();
+            }
+            else
+            {
+                DataTable dt = PatientsService.QueryPatients("caseno", View.SelectedCaseNo);
+                _loader.ModifyRegisterView(Dt2PatientsInfo(dt));
+                _loader.LastLoadedView.ShowDialog();
+            }
         }
 
         public void OnFillCase()

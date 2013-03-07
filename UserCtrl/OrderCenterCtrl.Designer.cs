@@ -69,10 +69,10 @@ namespace DentistryClient.UserCtrl
             this.lvSearchOrder = new System.Windows.Forms.ListView();
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -441,6 +441,12 @@ namespace DentistryClient.UserCtrl
             this.columnHeader20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader20.Width = 68;
             // 
+            // columnHeader24
+            // 
+            this.columnHeader24.Text = "预约医生";
+            this.columnHeader24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader24.Width = 75;
+            // 
             // columnHeader21
             // 
             this.columnHeader21.Text = "预约时间";
@@ -458,12 +464,6 @@ namespace DentistryClient.UserCtrl
             this.columnHeader23.Text = "内容";
             this.columnHeader23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader23.Width = 156;
-            // 
-            // columnHeader24
-            // 
-            this.columnHeader24.Text = "预约医生";
-            this.columnHeader24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader24.Width = 75;
             // 
             // columnHeader26
             // 

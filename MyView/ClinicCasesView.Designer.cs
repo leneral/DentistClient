@@ -540,11 +540,5 @@ namespace DentistryClient.MyView
         private System.Windows.Forms.Button btn3;
         private System.Windows.Forms.Button btn2;
         private System.Windows.Forms.Button btn1;
-        public event EventHandler NewCaseClick;
-        public event EventHandler FillCaseClick;
-        public new event EventHandler Closing;
-        public event EventHandler Loading;
-
-       
     }
 }

@@ -10,6 +10,7 @@ namespace DentistryClient.MyView
 {
     internal partial class RegisterView : Form, IRegisterView
     {
+        public RegisterPresenter Presenter { get; set; }
         private readonly AddNewNodeEventHandler _mr;
 
         public RegisterView(AddNewNodeEventHandler mr)
@@ -21,6 +22,8 @@ namespace DentistryClient.MyView
 
         public RegisterView(PatientsInfo info)
         {
+            InitializeComponent();
+
             CaseNo = info.CaseNo;
             PatientsName = info.Name;
             Sex = info.Sex;
@@ -38,13 +41,15 @@ namespace DentistryClient.MyView
             Cooperation = info.Cooperation;
             SelfControl = info.SelfControl;
             Other = info.Other;
-        }
 
-        public RegisterPresenter Presenter { get; set; }
+            ToUpdate = true;
+            btnSave.Text = "¸üÐÂ";
+        }
 
         private void RegisterView_Load(object sender, EventArgs e)
         {
-            Presenter.GenNewCaseno();
+            if(!ToUpdate)
+                Presenter.GenNewCaseno();
             picPhoto.Image = Presenter.GetDefaultImage("res/default.jpg");
         }
 
@@ -172,6 +177,8 @@ namespace DentistryClient.MyView
             get { return picPhoto.Image; }
             set { picPhoto.Image = value; }
         }
+
+        public bool ToUpdate { get; set; }
 
         public void ShowDlg()
         {

@@ -4,7 +4,6 @@ namespace DentistryClient.Preliminary
 {
     public interface IPreliminaryView : IView
     {
-        string PatientName { get; set; }
         string CaseNo { get; }
         string ExludedCase { get; set; }
         string Extent { get; set; }
@@ -13,6 +12,8 @@ namespace DentistryClient.Preliminary
         string Periods { get; set; }
         DateTime PreliminaryDate { get; set; }
         string Type { get; set; }
+
+        bool ToUpdate { get; set; }
 
         PreliminaryPresenter Presenter { get; set; }
     }

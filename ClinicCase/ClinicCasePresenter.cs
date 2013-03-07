@@ -10,9 +10,9 @@ namespace DentistryClient.ClinicCase
 {
     public class ClinicCasePresenter : Presenter
     {
-        private readonly ViewLoader _loader = new ViewLoader();
         private bool _saved;
         public IClinicCaseView View { get; set; }
+        private readonly ViewLoader _loader = new ViewLoader();
 
         public void Initialize()
         {
@@ -22,17 +22,50 @@ namespace DentistryClient.ClinicCase
 
         public void OnPreliminary()
         {
-            _loader.LoadPreliminaryView(View.CaseNo, View.SufferName, FlushHistoryListDelegWrap);
-            _loader.LastLoadedView.ShowDialog();
+            if (IsExistPreliminary())
+            {
+                var dt = PatientsService.QueryPreliminaryInfo("caseno", View.CaseNo);
+                var info = new PreliminaryInfo
+                    {
+                        CaseNo = View.CaseNo,
+                        FaceWoundHistory = dt.Rows[0][1].ToString(),
+                        IsCuring = dt.Rows[0][2].ToString(),
+                        Type = dt.Rows[0][3].ToString(),
+                        Extent = dt.Rows[0][4].ToString(),
+                        Periods = dt.Rows[0][5].ToString(),
+                        ExludedCases = dt.Rows[0][6].ToString(),
+                        PreliminaryDate = Convert.ToDateTime(dt.Rows[0][7].ToString())
+                    };
+                _loader.LoadPreliminaryView(info);
+                _loader.LastLoadedView.ShowDialog();
+            }
+            else
+            {
+                _loader.LoadPreliminaryView(View.CaseNo, View.SufferName, FlushHistoryListDelegWrap);
+                _loader.LastLoadedView.ShowDialog();
+            }
+           
         }
 
         public void OnFillCase()
         {
+            bool exist = IsExistPreliminary();
+            if (!exist)
+            {
+                MessageA.ShowMessage("请先填写初诊信息！");
+                return;
+            }
+            if (IsRejectedCase())
+            {
+                MessageA.ShowMessage("此用户是排除病例，无法填写诊断信息！");
+                return;
+            }
             if (View.Type == string.Empty)
             {
                 MessageA.ShowMessage("请先选择病情类别！");
                 return;
             }
+            
             _loader.LoadCaseProcView(DisplayCasesDelegWrap);
             _loader.LastLoadedView.ShowDialog();
         }
@@ -91,10 +124,10 @@ namespace DentistryClient.ClinicCase
             return PatientsService.QueryDiagnosedInfo(item, value);
         }
 
-        public DiagnosedInfo LoadDiagnoseInfo(string caseno, int index)
+        public DiagnosedInfo LoadDiagnoseInfo(int index)
         {
-            DataTable dt = QueryDiagnoseInfo("caseno", caseno);
-            var diagnosedInfo = new DiagnosedInfo
+            var dt = QueryDiagnoseInfo("caseno", View.CaseNo);
+            return new DiagnosedInfo
                 {
                     Type = dt.Rows[index][4].ToString(),
                     Score = dt.Rows[index][5].ToString(),
@@ -107,13 +140,12 @@ namespace DentistryClient.ClinicCase
                     SickHistoryNow = dt.Rows[index][7].ToString(),
                     Picture = dt.Rows[index][13].ToString()
                 };
-            return diagnosedInfo;
         }
 
-        public PreliminaryInfo LoadPreliminaryInfo(string caseno, int index)
+        public PreliminaryInfo LoadPreliminaryInfo(int index)
         {
-            DataTable dt = PatientsService.QueryPreliminaryInfo("caseno", caseno);
-            var preliminaryInfo = new PreliminaryInfo
+            DataTable dt = PatientsService.QueryPreliminaryInfo("caseno", View.CaseNo);
+            return new PreliminaryInfo
                 {
                     FaceWoundHistory = dt.Rows[index][2].ToString(),
                     IsCuring = dt.Rows[index][3].ToString(),
@@ -122,24 +154,42 @@ namespace DentistryClient.ClinicCase
                     Periods = dt.Rows[index][6].ToString(),
                     ExludedCases = dt.Rows[index][7].ToString(),
                 };
-            return preliminaryInfo;
         }
 
         public void OnButtonClick(string btntext)
         {
             string checktype = btntext.Substring(2, 2);
-            int number = Convert.ToInt16(btntext.Substring(1, 1)) - 1;
+            int idx = Convert.ToInt16(btntext.Substring(1, 1)) - 1;
             switch (checktype)
             {
                 case "初诊":
-                    PreliminaryInfo preminfo = LoadPreliminaryInfo(View.CaseNo, number);
-                    View.DisplayPreliminaryDeleg(preminfo);
+                    PreliminaryInfo preliminaryInfo = LoadPreliminaryInfo(idx);
+                    View.DisplayPreliminaryinfo(preliminaryInfo);
                     break;
                 case "复诊":
-                    DiagnosedInfo info = LoadDiagnoseInfo(View.CaseNo, number);
-                    View.DisplayDiagnoseInfo(info);
+                    DiagnosedInfo diagnosedInfo = LoadDiagnoseInfo(idx);
+                    View.DisplayDiagnoseInfo(diagnosedInfo);
                     break;
             }
+        }
+
+        private bool IsExistPreliminary()
+        {
+            var dt = PatientsService.QueryPreliminaryInfo("caseno", View.CaseNo);
+            if (dt.Rows.Count == 0)
+                return false;
+            return true;
+        }
+
+        private bool IsRejectedCase()
+        {
+            var dt = PatientsService.QueryPreliminaryInfo("caseno", View.CaseNo);
+            if (dt.Rows.Count == 0)
+                return true;
+            string str = dt.Rows[0][7].ToString();
+            if (dt.Rows[0][6].ToString() != "否")
+                return true;
+            return false;
         }
 
         private void DisplayCasesDelegWrap(ref DiagnosedInfo info)

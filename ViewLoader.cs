@@ -6,6 +6,7 @@ using DentistryClient.Login;
 using DentistryClient.MyView;
 using DentistryClient.Preliminary;
 using DentistryClient.Prescription;
+using DentistryClient.ReVisit;
 using DentistryClient.Register;
 using DentistryClient.Salary;
 using DentistryClient.Search;
@@ -102,9 +103,9 @@ namespace DentistryClient
         {
         }
 
-        public void LoadPreliminaryView(string caseno, string name)
+        public void LoadPreliminaryView(PreliminaryInfo info)
         {
-            var view = new PreliminaryView(caseno, name);
+            var view = new PreliminaryView(info);
             var presenter = new PreliminaryPresenter();
 
             view.Presenter = presenter;
@@ -161,6 +162,17 @@ namespace DentistryClient
         {
         }
 
+        public void LoadReVisitView(string caseno)
+        {
+            var view = new ReVisitView(caseno);
+            var presenter = new ReVisitViewPresenter();
+
+            view.Presenter = presenter;
+            presenter.View = view;
+
+            LoadView(view);
+        }
+
         public void LoadTodayJobCtrl()
         {
             var view = new TodayJobCtrl();
@@ -198,6 +210,17 @@ namespace DentistryClient
         {
             var view = new PrescriptionCtrl();
             var presenter = new PrescriptionPresenter();
+
+            view.Presenter = presenter;
+            presenter.View = view;
+
+            LoadControl(view);
+        }
+
+        public void LoadReVisitCenterCtrl()
+        {
+            var view = new ReVisitCenterCtrl();
+            var presenter = new ReVisitCtrlPresenter();
 
             view.Presenter = presenter;
             presenter.View = view;

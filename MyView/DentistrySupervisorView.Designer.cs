@@ -68,6 +68,8 @@ namespace DentistryClient.MyView
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuPayment = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlLeft = new System.Windows.Forms.Panel();
+            this.lblCheckReturn = new System.Windows.Forms.Label();
+            this.btnCheckReturn = new System.Windows.Forms.Button();
             this.lblSalarySearch = new System.Windows.Forms.Label();
             this.lblSalaryCenter = new System.Windows.Forms.Label();
             this.lblOrderCenter = new System.Windows.Forms.Label();
@@ -293,6 +295,8 @@ namespace DentistryClient.MyView
             this.pnlLeft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
             this.pnlLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlLeft.Controls.Add(this.lblCheckReturn);
+            this.pnlLeft.Controls.Add(this.btnCheckReturn);
             this.pnlLeft.Controls.Add(this.lblSalarySearch);
             this.pnlLeft.Controls.Add(this.lblSalaryCenter);
             this.pnlLeft.Controls.Add(this.lblOrderCenter);
@@ -314,6 +318,25 @@ namespace DentistryClient.MyView
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(180, 656);
             this.pnlLeft.TabIndex = 4;
+            // 
+            // lblCheckReturn
+            // 
+            this.lblCheckReturn.AutoSize = true;
+            this.lblCheckReturn.Location = new System.Drawing.Point(119, 503);
+            this.lblCheckReturn.Name = "lblCheckReturn";
+            this.lblCheckReturn.Size = new System.Drawing.Size(53, 12);
+            this.lblCheckReturn.TabIndex = 19;
+            this.lblCheckReturn.Text = "回访登记";
+            // 
+            // btnCheckReturn
+            // 
+            this.btnCheckReturn.Location = new System.Drawing.Point(100, 494);
+            this.btnCheckReturn.Name = "btnCheckReturn";
+            this.btnCheckReturn.Size = new System.Drawing.Size(75, 23);
+            this.btnCheckReturn.TabIndex = 18;
+            this.btnCheckReturn.Text = "回访登记";
+            this.btnCheckReturn.UseVisualStyleBackColor = true;
+            this.btnCheckReturn.Click += new System.EventHandler(this.btnCheckReturn_Click);
             // 
             // lblSalarySearch
             // 
@@ -619,12 +642,21 @@ namespace DentistryClient.MyView
             lblOrderCenter.Visible = true;
             list.Add(lblOrderCenter);
 
+            btnCheckReturn.Size = btnSz;
+            btnCheckReturn.Location = new Point(btnX, lblOrderCenter.Location.Y + lblOrderCenter.Size.Height + gap);
+            btnCheckReturn.Visible = true;
+            list.Add(btnCheckReturn);
+            lblCheckReturn.Size = lblSz;
+            lblCheckReturn.Location = new Point(lblX, btnCheckReturn.Location.Y + btnCheckReturn.Size.Height);
+            lblCheckReturn.Visible = true;
+            list.Add(lblCheckReturn);
+
             AddCtrlsToList(list, lstSuperCom);
 
             btnSalaryCenter.Visible = false;
             lblSalaryCenter.Visible = false;
             btnSalarySearch.Visible = false;
-            btnSalarySearch.Visible = false;
+            lblSalarySearch.Visible = false;
         }
 
         private void ArrangeSalaryCom()
@@ -676,5 +708,7 @@ namespace DentistryClient.MyView
         private Label lblPatientsCenter;
         private Label lblToday;
         private Panel panel1;
+        private Button btnCheckReturn;
+        private Label lblCheckReturn;
     }
 }
