@@ -8,7 +8,7 @@ namespace Model.ImageManager
     {
         public static byte[] GetBytes(Image img)
         {
-            byte[] photoByte = null;
+            byte[] photo = null;
 
             if (!img.Equals(null))
             {
@@ -16,13 +16,13 @@ namespace Model.ImageManager
                 {
                     var bmp = new Bitmap(img);
                     bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    photoByte = new byte[ms.Length];
+                    photo = new byte[ms.Length];
                     ms.Position = 0;
-                    ms.Read(photoByte, 0, Convert.ToInt32(ms.Length));
+                    ms.Read(photo, 0, Convert.ToInt32(ms.Length));
                     bmp.Dispose();
                 }
             }
-            return photoByte;
+            return photo;
         }   
     }
 }
