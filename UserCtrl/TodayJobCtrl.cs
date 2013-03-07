@@ -10,30 +10,10 @@ namespace DentistryClient.UserCtrl
 
     public partial class TodayJobCtrl : UserControl, ITodayJobView
     {
+        public TodayJobPresenter Presenter { get; set; }
         public TodayJobCtrl()
         {
             InitializeComponent();
-        }
-
-        public TodayJobPresenter Presenter { get; set; }
-
-        public void AddNewNodeDeleg(string nodeName)
-        {
-            TreeNode tn = DateTime.Now.Hour < 12
-                              ? treeTodayPatients.Nodes[0].Nodes[0]
-                              : treeTodayPatients.Nodes[0].Nodes[1];
-
-            tn.Nodes.Add(new TreeNode(nodeName));
-            treeTodayPatients.ExpandAll();
-        }
-
-        public string SelectedCaseNo { get; set; }
-        public string PatientName { get; set; }
-
-        public string SearchWord
-        {
-            get { return txtSearch.Text; }
-            set { txtSearch.Text = value; }
         }
 
         private void TodayJobCtrl_Load(object sender, EventArgs e)
@@ -114,6 +94,25 @@ namespace DentistryClient.UserCtrl
         private void btnSearch_Click(object sender, EventArgs e)
         {
             ShowSearched(Presenter.Search());
+        }
+
+        public void AddNewNodeDeleg(string nodeName)
+        {
+            TreeNode tn = DateTime.Now.Hour < 12
+                              ? treeTodayPatients.Nodes[0].Nodes[0]
+                              : treeTodayPatients.Nodes[0].Nodes[1];
+
+            tn.Nodes.Add(new TreeNode(nodeName));
+            treeTodayPatients.ExpandAll();
+        }
+
+        public string SelectedCaseNo { get; set; }
+        public string PatientName { get; set; }
+
+        public string SearchWord
+        {
+            get { return txtSearch.Text; }
+            set { txtSearch.Text = value; }
         }
 
         private void LoadThisWeekOrders()
