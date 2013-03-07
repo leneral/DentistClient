@@ -71,12 +71,6 @@
     <Compile Include="IViewLoader.cs" />
     <Compile Include="Login\ILoginView.cs" />
     <Compile Include="Login\LoginPresenter.cs" />
-    <Compile Include="MyView\ReVisitView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MyView\ReVisitView.Designer.cs">
-      <DependentUpon>ReVisitView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Order\IOrderView.cs" />
     <Compile Include="Order\OrderPresenter.cs" />
     <Compile Include="Prescription\IPrescriptionView.cs" />
@@ -86,6 +80,12 @@
     <Compile Include="Presenter.cs" />
     <Compile Include="Register\IRegisterView.cs" />
     <Compile Include="Register\RegisterPresenter.cs" />
+    <Compile Include="MyView\ReVisitView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyView\ReVisitView.designer.cs">
+      <DependentUpon>ReVisitView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReVisit\IReVisitCtrl.cs" />
     <Compile Include="ReVisit\IReVisitView.cs" />
     <Compile Include="ReVisit\ReVisitCtrlPresenter.cs" />
@@ -201,9 +201,6 @@
       <DependentUpon>TemplateOpView.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewLoader.cs" />
-    <EmbeddedResource Include="MyView\ReVisitView.resx">
-      <DependentUpon>ReVisitView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -254,6 +251,9 @@
     <EmbeddedResource Include="MyView\TemplateOpView.resx">
       <DependentUpon>TemplateOpView.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyView\ReVisitView.resx">
+      <DependentUpon>ReVisitView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserCtrl\OrderCenterCtrl.resx">
       <DependentUpon>OrderCenterCtrl.cs</DependentUpon>
