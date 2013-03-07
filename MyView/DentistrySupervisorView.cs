@@ -8,15 +8,10 @@ namespace DentistryClient.MyView
     public partial class DentistrySupervisorView : Form, IMainView
     {
         public MainPresenter Presenter { get; set; }
+
         public DentistrySupervisorView()
         {
             InitializeComponent();
-        }
-
-        public Size CtrlSize
-        {
-            get { return panel1.Size; }
-            set { panel1.Size = value; }
         }
 
         private void FormDentistrySupervisor_Load(object sender, EventArgs e)
@@ -133,5 +128,12 @@ namespace DentistryClient.MyView
         }
 
         #endregion
+
+
+        public Size CtrlSize
+        {
+            get { return panel1.Size; }
+            set { panel1.Size = value; }
+        }
     }
 }

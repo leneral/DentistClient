@@ -9,28 +9,27 @@ using Model.Patients;
 namespace DentistryClient.MyView
 {
     public delegate void DisplayCasesEventHandler(ref DiagnosedInfo info);
-
     public delegate void FlushHistoryListEventHandler();
 
     public partial class ClinicCasesView : Form, IClinicCaseView
     {
-        private Button[] _btnlist;
+        private Button[] _btnList;
         private DiagnosedInfo _info;
         public ClinicCasePresenter Presenter { get; set; }
 
-        public ClinicCasesView(string caseno, string patientname)
+        public ClinicCasesView(string caseNo, string patientName)
         {
             InitializeComponent();
 
-            CaseNo = caseno;
-            SufferName = patientname; 
+            CaseNo = caseNo;
+            PatientName = patientName; 
         }
 
         private void ClinicCasesView_Load(object sender, EventArgs e)
         {
             Presenter.Initialize();
 
-            _btnlist = new[] { btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10 };
+            _btnList = new[] { btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10 };
 
             LoadDiagnoseHistoryRecords();
         }
@@ -67,30 +66,18 @@ namespace DentistryClient.MyView
             Presenter.OnButtonClick(btntext);
         }
 
-        public void FlushHistoryListDeleg()
-        {
-            LoadDiagnoseHistoryRecords();
-        }
-
-        public void DisplayCasesDeleg(ref DiagnosedInfo info)
-        {
-            _info = info;
-
-            DisplayDiagOrPremInfo(info.ToHashtable());
-        }
-
         public void DisplayDiagnoseInfo(DiagnosedInfo info)
         {
             cbxType.Text = info.Type;
             cbxScore.Text = info.Score;
             if (info.Picture.Length != 0)
             {
-                byte[] photobyte = Convert.FromBase64String(info.Picture);
-                picImage.Image = Presenter.GetImageManager(photobyte);
+                byte[] photo = Convert.FromBase64String(info.Picture);
+                Picture = Presenter.GetImage(photo);
             }
             else
             {
-                picImage.Image = null;
+                Picture = null;
             }
             DisplayDiagOrPremInfo(info.ToHashtable());
         }
@@ -111,41 +98,45 @@ namespace DentistryClient.MyView
             const int y0 = 30;
             const int increX = 273;
             const int increY = 40;
-            pnlInfo.Controls.Clear();
+            pnlBtnContainer.Controls.Clear();
             foreach (DictionaryEntry de in ht)
             {
-                var lblTitle = new Label {Text = de.Key.ToString(), Location = new Point(x0, (y0 + i*increY))};
+                var lblTitle = new Label
+                    {
+                        Text = de.Key.ToString(), 
+                        Location = new Point(x0, (y0 + i*increY))
+                    };
                 var lblContext = new Label
                     {
                         Text = de.Value.ToString(),
                         Location = new Point((x0 + increX), (y0 + increY*i))
                     };
-                pnlInfo.Controls.Add(lblTitle);
-                pnlInfo.Controls.Add(lblContext);
+                pnlBtnContainer.Controls.Add(lblTitle);
+                pnlBtnContainer.Controls.Add(lblContext);
                 i++;
             }
         }
 
-        public void LoadComponents(DataTable preliminaryDt, DataTable secDiagnoseDt)
+        public void LoadComponents(DataTable preliminary, DataTable diagnose)
         {
-            int preliminaryCnt = preliminaryDt.Rows.Count;
-            int diagCnt = secDiagnoseDt.Rows.Count;
+            int preliminaryCnt = preliminary.Rows.Count;
+            int diagCnt = diagnose.Rows.Count;
             int count = preliminaryCnt + diagCnt;
-            foreach (Button btn in _btnlist)
+            foreach (var btn in _btnList)
             {
                 btn.Visible = true;
             }
-            for (int i = 0; i < preliminaryCnt; i++)
+            for (var i = 0; i < preliminaryCnt; i++)
             {
-                _btnlist[i].Text = "第" + (i + 1) + "初诊" + "\r\n" + "时间：" + preliminaryDt.Rows[i][7];
+                _btnList[i].Text = @"第" + (i + 1) + @"初诊" + @"\r\n" + @"时间：" + preliminary.Rows[i][7];
             }
-            for (int i = 0; i < diagCnt; i++)
+            for (var i = 0; i < diagCnt; i++)
             {
-                _btnlist[i + preliminaryCnt].Text = "第" + (i + 1) + "复诊" + "\r\n" + "时间：" + secDiagnoseDt.Rows[i][3];
+                _btnList[i + preliminaryCnt].Text = @"第" + (i + 1) + @"复诊" + @"\r\n" + @"时间：" + diagnose.Rows[i][3];
             }
-            for (int i = count; i < _btnlist.Length; i++)
+            for (var i = count; i < _btnList.Length; i++)
             {
-                _btnlist[i].Visible = false;
+                _btnList[i].Visible = false;
             }
         }
 
@@ -156,11 +147,23 @@ namespace DentistryClient.MyView
             LoadComponents(preliminaryDt, diagnoseDt);
         }
 
+        public void FlushHistoryListDeleg()
+        {
+            LoadDiagnoseHistoryRecords();
+        }
+
+        public void DisplayCasesDeleg(ref DiagnosedInfo info)
+        {
+            _info = info;
+
+            DisplayDiagOrPremInfo(info.ToHashtable());
+        }
+
         #region IClinicCaseView Members
 
         public string CaseNo { get; set; }
 
-        public string SufferName
+        public string PatientName
         {
             get { return lblSuffererName.Text; }
             set { lblSuffererName.Text = value; }
@@ -208,7 +211,7 @@ namespace DentistryClient.MyView
 
         public void ShowPreliminary()
         {
-            new PreliminaryView(CaseNo, SufferName).Show();
+            new PreliminaryView(CaseNo, PatientName).Show();
         }
 
         #endregion

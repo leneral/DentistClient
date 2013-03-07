@@ -20,7 +20,7 @@ namespace DentistryClient
 
         public PatientsInfo Dt2PatientsInfo(DataTable dt)
         {
-            return new PatientsInfo
+           return new PatientsInfo
                 {
                     CaseNo = dt.Rows[0][0].ToString(),
                     Name = dt.Rows[0][1].ToString(),

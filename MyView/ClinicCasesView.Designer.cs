@@ -37,7 +37,7 @@ namespace DentistryClient.MyView
             this.panel4 = new System.Windows.Forms.Panel();
             this.picImage = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.pnlInfo = new System.Windows.Forms.Panel();
+            this.pnlBtnContainer = new System.Windows.Forms.Panel();
             this.btnFillCase = new System.Windows.Forms.Button();
             this.cbxType = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -119,7 +119,7 @@ namespace DentistryClient.MyView
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.pnlInfo);
+            this.panel3.Controls.Add(this.pnlBtnContainer);
             this.panel3.Controls.Add(this.btnFillCase);
             this.panel3.Controls.Add(this.cbxType);
             this.panel3.Controls.Add(this.label6);
@@ -133,15 +133,15 @@ namespace DentistryClient.MyView
             this.panel3.Size = new System.Drawing.Size(656, 654);
             this.panel3.TabIndex = 6;
             // 
-            // pnlInfo
+            // pnlBtnContainer
             // 
-            this.pnlInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.pnlBtnContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlInfo.Location = new System.Drawing.Point(16, 80);
-            this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(621, 516);
-            this.pnlInfo.TabIndex = 18;
+            this.pnlBtnContainer.Location = new System.Drawing.Point(16, 80);
+            this.pnlBtnContainer.Name = "pnlBtnContainer";
+            this.pnlBtnContainer.Size = new System.Drawing.Size(621, 516);
+            this.pnlBtnContainer.TabIndex = 18;
             // 
             // btnFillCase
             // 
@@ -529,7 +529,7 @@ namespace DentistryClient.MyView
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbxType;
         private System.Windows.Forms.Button btnFillCase;
-        private System.Windows.Forms.Panel pnlInfo;
+        private System.Windows.Forms.Panel pnlBtnContainer;
         private System.Windows.Forms.Button btn10;
         private System.Windows.Forms.Button btn9;
         private System.Windows.Forms.Button btn8;

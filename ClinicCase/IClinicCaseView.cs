@@ -6,7 +6,7 @@ namespace DentistryClient.ClinicCase
     public interface IClinicCaseView : IView
     {
         string CaseNo { get; set; }
-        string SufferName { get; set; }
+        string PatientName { get; set; }
         string Type { get; set; }
         string Date { get; set; }
         string Score { get; set; }

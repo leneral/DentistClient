@@ -50,6 +50,7 @@ namespace DentistryClient.Register
                 MessageA.ShowMessage("对不起，诊所或医院不能为空！");
                 return;
             }
+
             var isAllNumber = reg.Match(View.CaseNo);
             if (!isAllNumber.Success)
             {
@@ -164,6 +165,11 @@ namespace DentistryClient.Register
             {
                 View.Exit();
             }
+        }
+
+        public Image GetImage(Byte[] photo)
+        {
+            return ImageManager.GetImage(photo);
         }
 
         public Image GetDefaultImage(string path)

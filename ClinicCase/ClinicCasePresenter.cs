@@ -42,7 +42,7 @@ namespace DentistryClient.ClinicCase
             }
             else
             {
-                _loader.LoadPreliminaryView(View.CaseNo, View.SufferName, FlushHistoryListDelegWrap);
+                _loader.LoadPreliminaryView(View.CaseNo, View.PatientName, FlushHistoryListDelegWrap);
                 _loader.LastLoadedView.ShowDialog();
             }
            
@@ -107,7 +107,7 @@ namespace DentistryClient.ClinicCase
             info.Type = View.Type;
             info.Score = View.Score;
             info.CaseNo = View.CaseNo;
-            info.PatientName = View.SufferName;
+            info.PatientName = View.PatientName;
             info.Filltime = View.Date;
             info.Writer = string.Empty;
 
@@ -174,7 +174,7 @@ namespace DentistryClient.ClinicCase
             }
         }
 
-        public Image GetImageManager(Byte[] photo)
+        public Image GetImage(Byte[] photo)
         {
             return ImageManager.GetImage(photo);
         }

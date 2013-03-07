@@ -12,6 +12,7 @@ namespace DentistryClient.MyView
     {
         public RegisterPresenter Presenter { get; set; }
         private readonly AddNewNodeEventHandler _mr;
+        private string _image;
 
         public RegisterView(AddNewNodeEventHandler mr)
         {
@@ -41,16 +42,27 @@ namespace DentistryClient.MyView
             Cooperation = info.Cooperation;
             SelfControl = info.SelfControl;
             Other = info.Other;
+             _image = info.Picture;
 
             ToUpdate = true;
-            btnSave.Text = "更新";
+            btnSave.Text = @"更新";
         }
 
         private void RegisterView_Load(object sender, EventArgs e)
         {
-            if(!ToUpdate)
+            if (!ToUpdate)
+            {
                 Presenter.GenNewCaseno();
-            picPhoto.Image = Presenter.GetDefaultImage("res/default.jpg");
+            }
+            if (_image.Length != 0)
+            {
+                byte[] photo = Convert.FromBase64String(_image);
+                Picture = Presenter.GetImage(photo);
+            }
+            else
+            {
+                Picture = null;
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
