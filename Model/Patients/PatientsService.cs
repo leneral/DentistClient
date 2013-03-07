@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Configuration;
 using System.Data;
-using System.Data.Common;
-using System.Data.OleDb;
-using System.Data.SqlClient;
-using System.Globalization;
-using System.Windows.Forms;
 using Model.Database;
 
 namespace Model.Patients

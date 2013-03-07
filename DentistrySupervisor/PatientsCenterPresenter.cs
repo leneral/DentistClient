@@ -52,6 +52,13 @@ namespace DentistryClient.DentistrySupervisor
             }
         }
 
+        public void OnCond1CheckedChanged()
+        {
+            View.CondCmbState = !View.CondCmbState;
+            View.FromDateCmbState = View.CondCmbState;
+            View.EndDateCmbState = View.CondCmbState;
+        }
+
         public void OnLookup()
         {
             if (View.SelectedCaseNo != string.Empty)
@@ -80,7 +87,7 @@ namespace DentistryClient.DentistrySupervisor
 
         private DataTable GetAdvanceQueryCmd()
         {
-            return null;
+            return PatientsService.QueryPatients();
         }
     }
 }

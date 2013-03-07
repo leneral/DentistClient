@@ -30,7 +30,7 @@ namespace Model.ImageManager
             Image img = null;
             if (photobyte.Length != 0)
             {
-                var ms = new System.IO.MemoryStream(photobyte);
+                var ms = new MemoryStream(photobyte);
                 img = Image.FromStream(ms);
             }
             return img;

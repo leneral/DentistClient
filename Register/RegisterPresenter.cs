@@ -50,7 +50,7 @@ namespace DentistryClient.Register
                 MessageA.ShowMessage("对不起，诊所或医院不能为空！");
                 return;
             }
-            var ma = reg.Match(View.CaseNo);
+            Match ma = reg.Match(View.CaseNo);
             if (!ma.Success)
             {
                 MessageA.ShowMessage("病历号必须全为数字！");

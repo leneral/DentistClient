@@ -183,6 +183,7 @@ namespace DentistryClient.MyView
             this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "È¡Ïû";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -259,7 +260,7 @@ namespace DentistryClient.MyView
             this.btn10.Size = new System.Drawing.Size(201, 47);
             this.btn10.TabIndex = 10;
             this.btn10.UseVisualStyleBackColor = true;
-            this.btn10.Click += new EventHandler(this.btnList_Click);
+            this.btn10.Click += new System.EventHandler(this.btnList_Click);
             // 
             // btn9
             // 
@@ -270,7 +271,7 @@ namespace DentistryClient.MyView
             this.btn9.Size = new System.Drawing.Size(201, 47);
             this.btn9.TabIndex = 9;
             this.btn9.UseVisualStyleBackColor = true;
-            this.btn9.Click += new EventHandler(this.btnList_Click);
+            this.btn9.Click += new System.EventHandler(this.btnList_Click);
             // 
             // btn8
             // 
@@ -281,7 +282,7 @@ namespace DentistryClient.MyView
             this.btn8.Size = new System.Drawing.Size(201, 47);
             this.btn8.TabIndex = 8;
             this.btn8.UseVisualStyleBackColor = true;
-            this.btn8.Click += new EventHandler(this.btnList_Click);
+            this.btn8.Click += new System.EventHandler(this.btnList_Click);
             // 
             // btn7
             // 
@@ -292,7 +293,7 @@ namespace DentistryClient.MyView
             this.btn7.Size = new System.Drawing.Size(201, 47);
             this.btn7.TabIndex = 7;
             this.btn7.UseVisualStyleBackColor = true;
-            this.btn7.Click += new EventHandler(this.btnList_Click);
+            this.btn7.Click += new System.EventHandler(this.btnList_Click);
             // 
             // btn6
             // 
@@ -303,7 +304,7 @@ namespace DentistryClient.MyView
             this.btn6.Size = new System.Drawing.Size(201, 47);
             this.btn6.TabIndex = 6;
             this.btn6.UseVisualStyleBackColor = true;
-            this.btn6.Click += new EventHandler(this.btnList_Click);
+            this.btn6.Click += new System.EventHandler(this.btnList_Click);
             // 
             // btn5
             // 
@@ -314,7 +315,7 @@ namespace DentistryClient.MyView
             this.btn5.Size = new System.Drawing.Size(201, 47);
             this.btn5.TabIndex = 5;
             this.btn5.UseVisualStyleBackColor = true;
-            this.btn5.Click += new EventHandler(this.btnList_Click);
+            this.btn5.Click += new System.EventHandler(this.btnList_Click);
             // 
             // btn4
             // 
@@ -325,7 +326,7 @@ namespace DentistryClient.MyView
             this.btn4.Size = new System.Drawing.Size(201, 47);
             this.btn4.TabIndex = 4;
             this.btn4.UseVisualStyleBackColor = true;
-            this.btn4.Click += new EventHandler(this.btnList_Click);
+            this.btn4.Click += new System.EventHandler(this.btnList_Click);
             // 
             // btn3
             // 
@@ -336,7 +337,7 @@ namespace DentistryClient.MyView
             this.btn3.Size = new System.Drawing.Size(201, 47);
             this.btn3.TabIndex = 3;
             this.btn3.UseVisualStyleBackColor = true;
-            this.btn3.Click += new EventHandler(this.btnList_Click);
+            this.btn3.Click += new System.EventHandler(this.btnList_Click);
             // 
             // btn2
             // 
@@ -347,7 +348,7 @@ namespace DentistryClient.MyView
             this.btn2.Size = new System.Drawing.Size(201, 47);
             this.btn2.TabIndex = 2;
             this.btn2.UseVisualStyleBackColor = true;
-            this.btn2.Click += new EventHandler(this.btnList_Click);
+            this.btn2.Click += new System.EventHandler(this.btnList_Click);
             // 
             // btn1
             // 
@@ -358,7 +359,7 @@ namespace DentistryClient.MyView
             this.btn1.Size = new System.Drawing.Size(201, 47);
             this.btn1.TabIndex = 1;
             this.btn1.UseVisualStyleBackColor = true;
-            this.btn1.Click+=new EventHandler(this.btnList_Click);
+            this.btn1.Click += new System.EventHandler(this.btnList_Click);
             // 
             // btnSearchImages
             // 
