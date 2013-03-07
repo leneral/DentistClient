@@ -23,6 +23,17 @@ namespace Model.ImageManager
                 }
             }
             return photoByte;
-        }   
+        }
+
+        public static Image GetImage(byte[] photobyte)
+        {
+            Image img = null;
+            if (photobyte.Length != 0)
+            {
+                var ms = new System.IO.MemoryStream(photobyte);
+                img = Image.FromStream(ms);
+            }
+            return img;
+        }
     }
 }
