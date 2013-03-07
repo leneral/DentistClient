@@ -128,11 +128,11 @@ namespace DentistryClient.MyView
             }
             for (var i = 0; i < preliminaryCnt; i++)
             {
-                _btnList[i].Text = @"第" + (i + 1) + @"初诊" + @"\r\n" + @"时间：" + preliminary.Rows[i][7];
+                _btnList[i].Text = @"第" + (i + 1) + @"初诊" + "\r\n" + @"时间：" + preliminary.Rows[i][7];
             }
             for (var i = 0; i < diagCnt; i++)
             {
-                _btnList[i + preliminaryCnt].Text = @"第" + (i + 1) + @"复诊" + @"\r\n" + @"时间：" + diagnose.Rows[i][3];
+                _btnList[i + preliminaryCnt].Text = @"第" + (i + 1) + @"复诊" + "\r\n" + @"时间：" + diagnose.Rows[i][3];
             }
             for (var i = count; i < _btnList.Length; i++)
             {

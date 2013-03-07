@@ -11,7 +11,7 @@ namespace Model.Util
         {
             //foreach (var item in _word)
             //{
-            //    if (ChineseChar.IsValidChar(item))
+            //    if (ChineseChar.IsValidChar(item)) 
             //    {
             //        ChineseChar chars = new ChineseChar(item);
             //        pinyin += string.Format("{0}", chars.Pinyins[0]);

@@ -23,24 +23,43 @@ namespace DentistryClient.UserCtrl
             lvPatientsInfo.BeginUpdate();
             foreach (DataRow r in dt.Rows)
             {
-                var li = new ListViewItem();
-                li.SubItems[0].Text = r[0].ToString();
-
-                li.SubItems.Add(r[1].ToString());
-                string tmp = r[2].ToString() == "1" ? "男" : "女";
-                li.SubItems.Add(tmp);
-                li.SubItems.Add(r[3].ToString());
-                li.SubItems.Add(r[8].ToString());
-                li.SubItems.Add(r[10].ToString());
-                li.SubItems.Add(r[17].ToString());
-                lvPatientsInfo.Items.Add(li);
+                lvPatientsInfo.Items.Add(CreatNewListViewItem(r));
             }
             lvPatientsInfo.EndUpdate();
         }
 
         private void btnAdvanceSearch_Click(object sender, EventArgs e)
         {
-            btnEasySearch_Click(sender, e);
+            DataTable dt = Presenter.Search();
+
+            lvPatientsInfo.Items.Clear();
+            lvPatientsInfo.BeginUpdate();
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (dr[17].ToString() != string.Empty)
+                {
+                    DateTime datetime = DateTime.Parse(dr[17].ToString());
+                    if (datetime >= BeginDate && datetime <= EndDate)
+                    {
+                        lvPatientsInfo.Items.Add(CreatNewListViewItem(dr));
+                    }
+                }  
+            }
+            lvPatientsInfo.EndUpdate();
+        }
+
+        private ListViewItem CreatNewListViewItem(DataRow datarow)
+        {
+            var li = new ListViewItem();
+            li.SubItems[0].Text = datarow[0].ToString();
+            li.SubItems.Add(datarow[1].ToString());
+            string tmp = datarow[2].ToString() == "1" ? "男" : "女";
+            li.SubItems.Add(tmp);
+            li.SubItems.Add(datarow[3].ToString());
+            li.SubItems.Add(datarow[8].ToString());
+            li.SubItems.Add(datarow[10].ToString());
+            li.SubItems.Add(datarow[17].ToString());
+            return li;
         }
 
         private void chkName_CheckedChanged(object sender, EventArgs e)
@@ -70,16 +89,18 @@ namespace DentistryClient.UserCtrl
 
         private void chkCond1_CheckedChanged(object sender, EventArgs e)
         {
-        }
-
-        private void chkCond2_CheckedChanged(object sender, EventArgs e)
-        {
+            Presenter.OnCond1CheckedChanged();
         }
 
         private void lvPatientsInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lvPatientsInfo.SelectedItems.Count > 0)
                 SelectedCaseNo = lvPatientsInfo.SelectedItems[0].SubItems[0].Text;
+        }
+
+        private void PatientsCenterCtrl_Load(object sender, EventArgs e)
+        {
+            cmbTimeCond.Text = cmbTimeCond.Items[0].ToString();
         }
 
         public void ShowPatientInfoDlg(PatientsInfo info)
@@ -116,7 +137,7 @@ namespace DentistryClient.UserCtrl
 
         public string Age
         {
-            get { return  numAge.Value.ToString(CultureInfo.InvariantCulture); }
+            get { return  numAge.Text; }
             set { numAge.Text = value; }
         }
 
@@ -130,12 +151,6 @@ namespace DentistryClient.UserCtrl
         {
             get { return txtCaseNo.Enabled; }
             set { txtCaseNo.Enabled = value; }
-        }
-
-        public bool ClinckRadioState
-        {
-            get { return cmbHospital.Enabled; }
-            set { cmbHospital.Enabled = value; }
         }
 
         public bool SexCmbState
@@ -156,9 +171,38 @@ namespace DentistryClient.UserCtrl
             set { cmbHospital.Enabled = value; }
         }
 
+        public bool CondCmbState
+        {
+            get { return cmbTimeCond.Enabled; }
+            set { cmbTimeCond.Enabled = value; }
+        }
+
+        public bool FromDateCmbState
+        {
+            get { return dtpFromDate.Enabled; }
+            set { dtpFromDate.Enabled = value; }
+        }
+        public bool EndDateCmbState
+        {
+            get { return dptEndDate.Enabled; }
+            set { dptEndDate.Enabled = value; }
+        }
+
         public int TabSelectedIndex
         {
             get { return ttabControl3.SelectedIndex; }
+            set { }
+        }
+
+        public DateTime BeginDate
+        {
+            get { return dtpFromDate.Value.Date; }
+            set { }
+        }
+
+        public DateTime EndDate
+        {
+            get { return dptEndDate.Value.Date; }
             set { }
         }
 

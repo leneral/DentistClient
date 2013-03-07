@@ -9,7 +9,6 @@ namespace Model.ImageManager
         public static byte[] GetBytes(Image img)
         {
             byte[] photo = null;
-
             if (!img.Equals(null))
             {
                 using (var ms = new MemoryStream())
@@ -24,6 +23,7 @@ namespace Model.ImageManager
             }
             return photo;
         }
+
         public static Image GetImage(byte[] photobyte)
         {
             Image img = null;

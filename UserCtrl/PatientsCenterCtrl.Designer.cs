@@ -44,10 +44,9 @@ namespace DentistryClient.UserCtrl
             this.txtCaseNo = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.tabAdvanceSearch = new System.Windows.Forms.TabPage();
+            this.dptEndDate = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnAdvanceSearch = new System.Windows.Forms.Button();
-            this.txtPersonName = new System.Windows.Forms.TextBox();
-            this.cmbPerson = new System.Windows.Forms.ComboBox();
-            this.chkCond2 = new System.Windows.Forms.CheckBox();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.cmbTimeCond = new System.Windows.Forms.ComboBox();
             this.chkCond1 = new System.Windows.Forms.CheckBox();
@@ -60,6 +59,7 @@ namespace DentistryClient.UserCtrl
             this.columnHeader32 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader33 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader34 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label2 = new System.Windows.Forms.Label();
             this.ttabControl3.SuspendLayout();
             this.tabEzSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAge)).BeginInit();
@@ -122,7 +122,7 @@ namespace DentistryClient.UserCtrl
             "诊所1",
             "诊所2",
             "诊所3"});
-            this.cmbHospital.Location = new System.Drawing.Point(554, 49);
+            this.cmbHospital.Location = new System.Drawing.Point(542, 46);
             this.cmbHospital.Name = "cmbHospital";
             this.cmbHospital.Size = new System.Drawing.Size(102, 20);
             this.cmbHospital.TabIndex = 8;
@@ -130,9 +130,9 @@ namespace DentistryClient.UserCtrl
             // numAge
             // 
             this.numAge.Enabled = false;
-            this.numAge.Location = new System.Drawing.Point(323, 82);
+            this.numAge.Location = new System.Drawing.Point(323, 80);
             this.numAge.Name = "numAge";
-            this.numAge.Size = new System.Drawing.Size(100, 21);
+            this.numAge.Size = new System.Drawing.Size(102, 21);
             this.numAge.TabIndex = 13;
             // 
             // chkAge
@@ -153,9 +153,9 @@ namespace DentistryClient.UserCtrl
             this.cmbSex.Items.AddRange(new object[] {
             "女",
             "男"});
-            this.cmbSex.Location = new System.Drawing.Point(130, 83);
+            this.cmbSex.Location = new System.Drawing.Point(133, 83);
             this.cmbSex.Name = "cmbSex";
-            this.cmbSex.Size = new System.Drawing.Size(100, 20);
+            this.cmbSex.Size = new System.Drawing.Size(102, 20);
             this.cmbSex.TabIndex = 11;
             // 
             // chkSex
@@ -221,10 +221,10 @@ namespace DentistryClient.UserCtrl
             // tabAdvanceSearch
             // 
             this.tabAdvanceSearch.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.tabAdvanceSearch.Controls.Add(this.label2);
+            this.tabAdvanceSearch.Controls.Add(this.dptEndDate);
+            this.tabAdvanceSearch.Controls.Add(this.label1);
             this.tabAdvanceSearch.Controls.Add(this.btnAdvanceSearch);
-            this.tabAdvanceSearch.Controls.Add(this.txtPersonName);
-            this.tabAdvanceSearch.Controls.Add(this.cmbPerson);
-            this.tabAdvanceSearch.Controls.Add(this.chkCond2);
             this.tabAdvanceSearch.Controls.Add(this.dtpFromDate);
             this.tabAdvanceSearch.Controls.Add(this.cmbTimeCond);
             this.tabAdvanceSearch.Controls.Add(this.chkCond1);
@@ -234,6 +234,22 @@ namespace DentistryClient.UserCtrl
             this.tabAdvanceSearch.Size = new System.Drawing.Size(782, 138);
             this.tabAdvanceSearch.TabIndex = 1;
             this.tabAdvanceSearch.Text = "高级查询";
+            // 
+            // dptEndDate
+            // 
+            this.dptEndDate.Location = new System.Drawing.Point(252, 58);
+            this.dptEndDate.Name = "dptEndDate";
+            this.dptEndDate.Size = new System.Drawing.Size(107, 21);
+            this.dptEndDate.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(229, 61);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 12);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "到";
             // 
             // btnAdvanceSearch
             // 
@@ -245,36 +261,9 @@ namespace DentistryClient.UserCtrl
             this.btnAdvanceSearch.UseVisualStyleBackColor = true;
             this.btnAdvanceSearch.Click += new System.EventHandler(this.btnAdvanceSearch_Click);
             // 
-            // txtPersonName
-            // 
-            this.txtPersonName.Enabled = false;
-            this.txtPersonName.Location = new System.Drawing.Point(119, 83);
-            this.txtPersonName.Name = "txtPersonName";
-            this.txtPersonName.Size = new System.Drawing.Size(107, 21);
-            this.txtPersonName.TabIndex = 8;
-            // 
-            // cmbPerson
-            // 
-            this.cmbPerson.Enabled = false;
-            this.cmbPerson.FormattingEnabled = true;
-            this.cmbPerson.Location = new System.Drawing.Point(38, 82);
-            this.cmbPerson.Name = "cmbPerson";
-            this.cmbPerson.Size = new System.Drawing.Size(75, 20);
-            this.cmbPerson.TabIndex = 7;
-            // 
-            // chkCond2
-            // 
-            this.chkCond2.AutoSize = true;
-            this.chkCond2.Location = new System.Drawing.Point(22, 85);
-            this.chkCond2.Name = "chkCond2";
-            this.chkCond2.Size = new System.Drawing.Size(15, 14);
-            this.chkCond2.TabIndex = 6;
-            this.chkCond2.UseVisualStyleBackColor = true;
-            this.chkCond2.CheckedChanged += new System.EventHandler(this.chkCond2_CheckedChanged);
-            // 
             // dtpFromDate
             // 
-            this.dtpFromDate.Location = new System.Drawing.Point(119, 21);
+            this.dtpFromDate.Location = new System.Drawing.Point(116, 58);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(107, 21);
             this.dtpFromDate.TabIndex = 3;
@@ -284,7 +273,7 @@ namespace DentistryClient.UserCtrl
             this.cmbTimeCond.FormattingEnabled = true;
             this.cmbTimeCond.Items.AddRange(new object[] {
             "首诊时间"});
-            this.cmbTimeCond.Location = new System.Drawing.Point(38, 21);
+            this.cmbTimeCond.Location = new System.Drawing.Point(35, 59);
             this.cmbTimeCond.Name = "cmbTimeCond";
             this.cmbTimeCond.Size = new System.Drawing.Size(75, 20);
             this.cmbTimeCond.TabIndex = 2;
@@ -294,7 +283,7 @@ namespace DentistryClient.UserCtrl
             this.chkCond1.AutoSize = true;
             this.chkCond1.Checked = true;
             this.chkCond1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCond1.Location = new System.Drawing.Point(22, 25);
+            this.chkCond1.Location = new System.Drawing.Point(19, 63);
             this.chkCond1.Name = "chkCond1";
             this.chkCond1.Size = new System.Drawing.Size(15, 14);
             this.chkCond1.TabIndex = 0;
@@ -371,6 +360,14 @@ namespace DentistryClient.UserCtrl
             this.columnHeader34.Text = "初诊时间";
             this.columnHeader34.Width = 203;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(117, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 12);
+            this.label2.TabIndex = 12;
+            // 
             // PatientsCenterCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -380,6 +377,7 @@ namespace DentistryClient.UserCtrl
             this.Controls.Add(this.ttabControl3);
             this.Name = "PatientsCenterCtrl";
             this.Size = new System.Drawing.Size(799, 663);
+            this.Load += new System.EventHandler(this.PatientsCenterCtrl_Load);
             this.ttabControl3.ResumeLayout(false);
             this.tabEzSearch.ResumeLayout(false);
             this.tabEzSearch.PerformLayout();
@@ -399,9 +397,6 @@ namespace DentistryClient.UserCtrl
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TabPage tabAdvanceSearch;
         private System.Windows.Forms.Button btnAdvanceSearch;
-        private System.Windows.Forms.TextBox txtPersonName;
-        private System.Windows.Forms.ComboBox cmbPerson;
-        private System.Windows.Forms.CheckBox chkCond2;
         private System.Windows.Forms.DateTimePicker dtpFromDate;
         private System.Windows.Forms.ComboBox cmbTimeCond;
         private System.Windows.Forms.CheckBox chkCond1;
@@ -428,5 +423,9 @@ namespace DentistryClient.UserCtrl
         public void Exit()
         {
         }
+
+        private System.Windows.Forms.DateTimePicker dptEndDate;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

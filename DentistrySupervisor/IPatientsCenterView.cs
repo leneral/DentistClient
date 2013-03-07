@@ -1,4 +1,5 @@
-﻿using Model.Patients;
+﻿using System;
+using Model.Patients;
 
 namespace DentistryClient.DentistrySupervisor
 {
@@ -9,13 +10,17 @@ namespace DentistryClient.DentistrySupervisor
         string Sex { get; set; }
         string Age { get; set; }
         string Hospital { get; set; }
+        DateTime BeginDate { get; set; }
+        DateTime EndDate { get; set; }
 
-        bool ClinckRadioState { get; set; }
         bool PatientTextState { get; set; }
         bool CaseNoTextState { get; set; }
         bool SexCmbState { get; set; }
         bool AgeNumState { get; set; }
         bool HospitalCmbState { get; set; }
+        bool CondCmbState { get; set; }
+        bool FromDateCmbState { get; set; }
+        bool EndDateCmbState { get; set; }
 
         int TabSelectedIndex { get; set; }
 
