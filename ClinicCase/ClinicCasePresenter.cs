@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 using Model.ImageManager;
@@ -67,7 +68,7 @@ namespace DentistryClient.ClinicCase
             }
             if (View.Picture != null)
             {
-                info.Picture = Convert.ToBase64String(ImageManager.GetBytes(View.Picture));
+                info.Picture =  Convert.ToBase64String( ImageManager.GetBytes(View.Picture));
             }
 
             info.Type = View.Type;
@@ -105,7 +106,7 @@ namespace DentistryClient.ClinicCase
                     CureInfo = dt.Rows[index][12].ToString(),
                     SickHistoryBefore = dt.Rows[index][8].ToString(),
                     SickHistoryNow = dt.Rows[index][7].ToString(),
-                    Picture = dt.Rows[index][13].ToString()
+                    Picture =  dt.Rows[index][13].ToString()
                 };
             return diagnosedInfo;
         }
@@ -140,6 +141,11 @@ namespace DentistryClient.ClinicCase
                     View.DisplayDiagnoseInfo(info);
                     break;
             }
+        }
+
+        public Image GetImageManager(Byte[] photobyte)
+        {
+            return ImageManager.GetImage(photobyte);
         }
 
         private void DisplayCasesDelegWrap(ref DiagnosedInfo info)
