@@ -49,6 +49,7 @@
     <Compile Include="Message\MessageA.cs" />
     <Compile Include="Patients\DiagnosedInfo.cs" />
     <Compile Include="Patients\OrderInfo.cs" />
+    <Compile Include="Patients\ReVisitInfo.cs" />
     <Compile Include="Patients\SalaryInfo.cs" />
     <Compile Include="Util\Ch2Pinyin.cs" />
     <Compile Include="Database\AccessDb.cs" />

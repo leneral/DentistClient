@@ -324,6 +324,7 @@ namespace DentistryClient.UserCtrl
             this.columnHeader32,
             this.columnHeader33,
             this.columnHeader34});
+            this.lvPatientsInfo.FullRowSelect = true;
             this.lvPatientsInfo.GridLines = true;
             this.lvPatientsInfo.Location = new System.Drawing.Point(4, 170);
             this.lvPatientsInfo.MultiSelect = false;

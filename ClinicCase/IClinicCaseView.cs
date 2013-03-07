@@ -17,7 +17,7 @@ namespace DentistryClient.ClinicCase
 
         void DisplayCasesDeleg(ref DiagnosedInfo info);
         void DisplayDiagnoseInfo(DiagnosedInfo info);
-        void DisplayPreliminaryDeleg(PreliminaryInfo preminfo);
+        void DisplayPreliminaryInfo(PreliminaryInfo preminfo);
         void FlushHistoryListDeleg();
     }
 }

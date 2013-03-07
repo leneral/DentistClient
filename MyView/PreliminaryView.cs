@@ -1,28 +1,45 @@
 using System;
 using System.Windows.Forms;
 using DentistryClient.Preliminary;
+using Model.Patients;
 
 namespace DentistryClient.MyView
 {
     public partial class PreliminaryView : Form, IPreliminaryView
     {
         private readonly FlushHistoryListEventHandler _flushDeleg;
+        public PreliminaryPresenter Presenter { get; set; }
 
         public PreliminaryView(string caseNo, string patientName, FlushHistoryListEventHandler flushDeleg = null)
         {
             InitializeComponent();
 
-            PatientName = patientName;
-            _flushDeleg = flushDeleg;
             CaseNo = caseNo;
+            PatientName = patientName;
+
+            _flushDeleg = flushDeleg;
         }
 
-        public PreliminaryPresenter Presenter { get; set; }
+        public PreliminaryView(PreliminaryInfo info)
+        {
+            InitializeComponent();
+
+            CaseNo = info.CaseNo;
+            FaceWoundHistory = info.FaceWoundHistory;
+            IsCuring = info.IsCuring;
+            Type = info.Type;
+            Extent = info.Extent;
+            Periods = info.Periods;
+            ExludedCase = info.ExludedCases;
+            PreliminaryDate = info.PreliminaryDate;
+
+            ToUpdate = true;
+            btnSave.Text = "¸üÐÂ";
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             Presenter.OnSave();
-
             if (_flushDeleg != null)
             {
                 _flushDeleg();
@@ -82,6 +99,7 @@ namespace DentistryClient.MyView
             set { cmbType.Text = value; }
         }
 
+        public bool ToUpdate { get; set; }
 
         public void Exit()
         {

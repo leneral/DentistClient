@@ -152,6 +152,7 @@ namespace DentistryClient.MyView
             this.cmbIsExcluded.FormattingEnabled = true;
             this.cmbIsExcluded.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.cmbIsExcluded.Items.AddRange(new object[] {
+            "否",
             "骨性Angle Ⅲ类错合",
             "严重的骨性Angle Ⅱ类错合",
             "上颚阻生牙",

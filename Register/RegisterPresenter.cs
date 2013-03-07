@@ -50,17 +50,17 @@ namespace DentistryClient.Register
                 MessageA.ShowMessage("对不起，诊所或医院不能为空！");
                 return;
             }
-            var ma = reg.Match(View.CaseNo);
-            if (!ma.Success)
+            var isAllNumber = reg.Match(View.CaseNo);
+            if (!isAllNumber.Success)
             {
                 MessageA.ShowMessage("病历号必须全为数字！");
                 return;
             }
 
             var dt = PatientsService.QueryCaseNo();
-            if (dt.Rows.Cast<DataRow>().Any(dr => dr[0].ToString() == View.CaseNo))
+            if (dt.Rows.Cast<DataRow>().Any(dr => dr[0].ToString() == View.CaseNo) && !View.ToUpdate)
             {
-                MessageA.ShowMessage("病历号已存在，请从新输入！");
+                MessageA.ShowMessage("病历号已存在，请重新输入！");
                 return;
             }
 
@@ -89,16 +89,32 @@ namespace DentistryClient.Register
                 patientsInfo.Picture = Convert.ToBase64String(ImageManager.GetBytes(View.Picture));
             }
 
-            _saved = PatientsService.SavePersonalInfo(new Patients(patientsInfo));
-            if (_saved)
+            if (View.ToUpdate)
             {
-                MessageA.ShowMessage("保存成功");
-                View.RegisterCallback();
-                View.Exit();
+                _saved = PatientsService.UpdatePatientInfo(patientsInfo);
+                if (_saved)
+                {
+                    MessageA.ShowMessage("保存成功");
+                    View.Exit();
+                }
+                else
+                {
+                    MessageA.ShowMessage("对不起，保存失败");
+                }
             }
             else
             {
-                MessageA.ShowMessage("对不起，保存失败");
+                _saved = PatientsService.SavePatientInfo(patientsInfo);
+                if (_saved)
+                {
+                    MessageA.ShowMessage("保存成功");
+                    View.RegisterCallback();
+                    View.Exit();
+                }
+                else
+                {
+                    MessageA.ShowMessage("对不起，保存失败");
+                }
             }
         }
 

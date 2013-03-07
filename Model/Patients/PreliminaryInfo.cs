@@ -1,12 +1,11 @@
-using System.Collections;
 using System;
+using System.Collections;
 
 namespace Model.Patients
 {
     public struct PreliminaryInfo
     {
         public string CaseNo;
-        public string PatientName;
         public string FaceWoundHistory;
         public string IsCuring;
         public string Type;

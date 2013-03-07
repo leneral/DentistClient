@@ -14,16 +14,18 @@ namespace DentistryClient
         void LoadOrderView();
         void LoadOrderView(OrderInfo info);
         void LoadOutProcView();
-        void LoadPreliminaryView(string caseno, string name);
+        void LoadPreliminaryView(PreliminaryInfo info);
         void LoadPreliminaryView(string caseno, string name, FlushHistoryListEventHandler flushDeleg);
         void LoadRegisterView(AddNewNodeEventHandler deleg);
         void LoadSearchView(ShowSelectedPatientEventHandler deleg);
         void LoadSelectionView();
         void LoadTemplateOpView();
+        void LoadReVisitView(string caseno);
 
         void LoadTodayJobCtrl();
         void LoadPatientsCenterCtrl();
         void LoadOrderCenterCtrl();
         void LoadPrescriptionCtrl();
+        void LoadReVisitCenterCtrl();
     }
 }

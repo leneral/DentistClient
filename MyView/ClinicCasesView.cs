@@ -16,17 +16,15 @@ namespace DentistryClient.MyView
     {
         private Button[] _btnlist;
         private DiagnosedInfo _info;
+        public ClinicCasePresenter Presenter { get; set; }
 
         public ClinicCasesView(string caseno, string patientname)
         {
             InitializeComponent();
 
-
             CaseNo = caseno;
-            SufferName = patientname; /////?????
+            SufferName = patientname; 
         }
-
-        public ClinicCasePresenter Presenter { get; set; }
 
         public void FlushHistoryListDeleg()
         {
@@ -37,8 +35,7 @@ namespace DentistryClient.MyView
         {
             _info = info;
 
-            Hashtable hashInfo = info.ToHashtable();
-            DisplayDiagOrPremInfo(hashInfo);
+            DisplayDiagOrPremInfo(info.ToHashtable());
         }
 
         public void DisplayDiagnoseInfo(DiagnosedInfo info)
@@ -48,19 +45,17 @@ namespace DentistryClient.MyView
             if (info.Picture.Length != 0)
             {
                 byte[] photobyte = Convert.FromBase64String(info.Picture);
-                picImage.Image = Presenter.GetImageManager(photobyte); 
+                picImage.Image = Presenter.GetImageManager(photobyte);
             }
-            Hashtable hashInfo = info.ToHashtable();
-            DisplayDiagOrPremInfo(hashInfo);
+            DisplayDiagOrPremInfo(info.ToHashtable());
         }
 
-        public void DisplayPreliminaryDeleg(PreliminaryInfo info)
+        public void DisplayPreliminaryInfo(PreliminaryInfo info)
         {
             cbxType.Text = string.Empty;
             cbxScore.Text = string.Empty;
 
-            Hashtable hashInfo = info.ToHashtable();
-            DisplayDiagOrPremInfo(hashInfo);
+            DisplayDiagOrPremInfo(info.ToHashtable());
         }
 
 

@@ -7,17 +7,43 @@ namespace DentistryClient.MyView
 {
     public partial class DentistrySupervisorView : Form, IMainView
     {
+        public MainPresenter Presenter { get; set; }
         public DentistrySupervisorView()
         {
             InitializeComponent();
         }
 
-        public MainPresenter Presenter { get; set; }
-
         public Size CtrlSize
         {
             get { return panel1.Size; }
             set { panel1.Size = value; }
+        }
+
+        private void FormDentistrySupervisor_Load(object sender, EventArgs e)
+        {
+            InitComs();
+
+            panel1.Controls.Add(Presenter.OnLoadTodayJobCtrl().LastLoadedControl);
+        }
+
+        private void btnToday_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Add(Presenter.OnLoadTodayJobCtrl().LastLoadedControl);
+        }
+
+        private void btnPatientsCenter_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Add(Presenter.OnPatientsCenterCtrl().LastLoadedControl);
+        }
+
+        private void btnOrderCenter_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Add(Presenter.OnOrderCenterCtrl().LastLoadedControl);
+        }
+
+        private void btnCheckReturn_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Add(Presenter.OnReVisitCenterCtrl().LastLoadedControl);
         }
 
         #region LeftPanel
@@ -107,27 +133,5 @@ namespace DentistryClient.MyView
         }
 
         #endregion
-
-        private void FormDentistrySupervisor_Load(object sender, EventArgs e)
-        {
-            InitComs();
-
-            panel1.Controls.Add(Presenter.OnLoadTodayJobCtrl().LastLoadedControl);
-        }
-
-        private void btnToday_Click(object sender, EventArgs e)
-        {
-            panel1.Controls.Add(Presenter.OnLoadTodayJobCtrl().LastLoadedControl);
-        }
-
-        private void btnPatientsCenter_Click(object sender, EventArgs e)
-        {
-            panel1.Controls.Add(Presenter.OnPatientsCenterCtrl().LastLoadedControl);
-        }
-
-        private void btnOrderCenter_Click(object sender, EventArgs e)
-        {
-            panel1.Controls.Add(Presenter.OnOrderCenterCtrl().LastLoadedControl);
-        }
     }
 }

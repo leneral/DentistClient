@@ -35,6 +35,15 @@ namespace DentistryClient.DentistrySupervisor
             return _loader;
         }
 
+        public ViewLoader OnReVisitCenterCtrl()
+        {
+            if (_loader.LastLoadedControl != null)
+                _loader.LastLoadedControl.Visible = false;
+            _loader.LoadReVisitCenterCtrl();
+            SetProperties();
+            return _loader;
+        }
+
         private void SetProperties()
         {
             _loader.LastLoadedControl.Location = new Point(0, 0);

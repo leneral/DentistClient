@@ -51,7 +51,6 @@ namespace DentistryClient.Preliminary
             var info = new PreliminaryInfo
                 {
                     CaseNo = View.CaseNo,
-                    PatientName = View.PatientName,
                     ExludedCases = View.ExludedCase,
                     Extent = View.Extent,
                     FaceWoundHistory = View.FaceWoundHistory,
@@ -61,8 +60,16 @@ namespace DentistryClient.Preliminary
                     PreliminaryDate = View.PreliminaryDate
                 };
 
-            _saved = PatientsService.SavePreliminaryInfo(info);
-            MessageA.ShowMessage(_saved ? "保存成功！" : "对不起，保存失败！");
+            if (View.ToUpdate)
+            {
+                _saved = PatientsService.UpdatePreliminaryInfo(info);
+                MessageA.ShowMessage(_saved ? "更新成功！" : "对不起，更新失败！");
+            }
+            else
+            {
+                _saved = PatientsService.SavePreliminaryInfo(info);
+                MessageA.ShowMessage(_saved ? "保存成功！" : "对不起，保存失败！");
+            }
 
             View.Exit();
         }
@@ -71,7 +78,7 @@ namespace DentistryClient.Preliminary
         {
             if (_saved)
                 View.Exit();
-            if (View.PatientName != string.Empty)
+            if (View.CaseNo!= string.Empty)
             {
                 DialogResult dlgResult = MessageBox.Show(
                     "您还没有保存数据，现在关闭将丢失数据，是否确定关闭？",
